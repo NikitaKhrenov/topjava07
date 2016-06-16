@@ -1,4 +1,7 @@
-package ru.javawebinar.topjava.model;
+package ru.javawebinar.topjava.to;
+
+import ru.javawebinar.topjava.model.Role;
+import ru.javawebinar.topjava.model.User;
 
 import java.time.LocalDateTime;
 
@@ -14,6 +17,8 @@ public class UserMealWithExceed {
     private final String description;
 
     private final int calories;
+
+    private final User user = new User(2, "userName2", "email2", "password2", Role.ROLE_USER);
 
     private final boolean exceed;
 

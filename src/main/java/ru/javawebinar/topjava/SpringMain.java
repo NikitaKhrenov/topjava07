@@ -4,8 +4,11 @@ import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import ru.javawebinar.topjava.model.Role;
 import ru.javawebinar.topjava.model.User;
+import ru.javawebinar.topjava.web.meal.UserMealRestController;
 import ru.javawebinar.topjava.web.user.AdminRestController;
 
+import java.time.LocalDateTime;
+import java.time.Month;
 import java.util.Arrays;
 
 /**
@@ -18,7 +21,11 @@ public class SpringMain {
         try (ConfigurableApplicationContext appCtx = new ClassPathXmlApplicationContext("spring/spring-app.xml")) {
             System.out.println(Arrays.toString(appCtx.getBeanDefinitionNames()));
             AdminRestController adminUserController = appCtx.getBean(AdminRestController.class);
-            System.out.println(adminUserController.create(new User(1, "userName", "email", "password", Role.ROLE_ADMIN)));
+            adminUserController.getAll().forEach(System.out::println);
+            UserMealRestController userMealRestController = appCtx.getBean(UserMealRestController.class);
+            userMealRestController.getAll().forEach(System.out::println);
+            LocalDateTime ldt = LocalDateTime.of(2015, Month.MAY, 30, 10, 0);
+            userMealRestController.getFiltered(ldt.toLocalDate(), null, ldt.toLocalDate(), null).forEach(System.out::println);
         }
     }
 }

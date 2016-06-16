@@ -1,8 +1,13 @@
 package ru.javawebinar.topjava.repository;
 
 import ru.javawebinar.topjava.model.UserMeal;
+import ru.javawebinar.topjava.to.UserMealWithExceed;
+import ru.javawebinar.topjava.util.exception.NotFoundException;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.Collection;
+import java.util.List;
 
 /**
  * GKislin
@@ -11,9 +16,13 @@ import java.util.Collection;
 public interface UserMealRepository {
     UserMeal save(UserMeal userMeal);
 
-    void delete(int id);
+    // false if not found
+    boolean delete(int id);
 
-    UserMeal get(int id);
+    // null if not found
+    UserMeal get(int id, int userId) throws NotFoundException;
 
-    Collection<UserMeal> getAll();
+    List<UserMealWithExceed> getAll(int userId);
+
+    List<UserMealWithExceed> getFiltered(LocalDate startDate, LocalTime startTime, LocalDate endDate, LocalTime endTime, int userId);
 }
