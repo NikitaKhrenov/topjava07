@@ -18,6 +18,7 @@ import java.util.Collection;
 public class UserMealServiceImpl implements UserMealService {
 
     @Autowired
+    //@Qualifier("jdbcUserMealRepositoryImpl")
     private UserMealRepository repository;
 
     @Override
