@@ -1,4 +1,4 @@
-package ru.javawebinar.topjava.service;
+package ru.javawebinar.topjava.service.meal;
 
 import org.junit.Rule;
 import org.junit.Test;
@@ -17,6 +17,8 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import ru.javawebinar.topjava.MealTestData;
 import ru.javawebinar.topjava.Profiles;
 import ru.javawebinar.topjava.model.UserMeal;
+import ru.javawebinar.topjava.service.ServiceTest;
+import ru.javawebinar.topjava.service.UserMealService;
 import ru.javawebinar.topjava.util.exception.NotFoundException;
 
 import java.time.LocalDate;
@@ -28,15 +30,8 @@ import static ru.javawebinar.topjava.MealTestData.*;
 import static ru.javawebinar.topjava.UserTestData.ADMIN_ID;
 import static ru.javawebinar.topjava.UserTestData.USER_ID;
 
-@ContextConfiguration({
-        "classpath:spring/spring-app.xml",
-        "classpath:spring/spring-db.xml"
-})
-@RunWith(SpringJUnit4ClassRunner.class)
-@Sql(scripts = "classpath:db/populateDB.sql", config = @SqlConfig(encoding = "UTF-8"))
-@ActiveProfiles(Profiles.ACTIVE_DB)
-public class UserMealServiceTest {
-    private static final Logger LOG = LoggerFactory.getLogger(UserMealServiceTest.class);;
+public abstract class UserMealServiceTest extends ServiceTest {
+    private static final Logger LOG = LoggerFactory.getLogger(UserMealServiceTest.class);
 
     @Rule
     public ExpectedException thrown = ExpectedException.none();
