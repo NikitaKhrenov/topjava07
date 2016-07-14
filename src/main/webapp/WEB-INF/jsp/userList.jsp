@@ -13,11 +13,11 @@
     <table border="1" cellpadding="8" cellspacing="0">
         <thead>
         <tr>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Roles</th>
-            <th>Active</th>
-            <th>Registered</th>
+            <th><fmt:message key="table.name"/></th>
+            <th><fmt:message key="table.email"/></th>
+            <th><fmt:message key="table.roles"/></th>
+            <th><fmt:message key="table.active"/></th>
+            <th><fmt:message key="table.registered"/></th>
         </tr>
         </thead>
         <c:forEach items="${userList}" var="user">
